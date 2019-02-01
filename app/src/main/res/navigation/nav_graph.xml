@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/searchFragment">
+
+    <!-- frame вместо дефолтного fragment
+        имя тега задано кастомным навигатором CustomFragmentNavigator.-->
+    <!-- Main menu-->
+
+    <frame
+        android:id="@+id/searchFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.SearchFragment"
+        android:label="@string/search_fragment_label"
+        tools:layout="@layout/search_fragment">
+        <action
+            android:id="@+id/action_searchFragment_to_artistReleasesFragment"
+            app:destination="@id/artistReleasesFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/barcodeFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.BarcodeFragment"
+        android:label="@string/barcode_fragment_label"
+        tools:layout="@layout/barcode_fragment"/>
+    <frame
+        android:id="@+id/aboutFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.AboutFragment"
+        android:label="@string/about_fragment_label"
+        tools:layout="@layout/about_fragment"/>
+    <frame
+        android:id="@+id/feedbackFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.FeedbackFragment"
+        android:label="@string/feedback_fragment_label"
+        tools:layout="@layout/feedback_fragment"/>
+    <frame
+        android:id="@+id/settingsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@layout/settings_fragment"/>
+
+    <!-- User menu -->
+    <frame
+        android:id="@+id/userProfilePagerFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserProfilePagerFragment"
+        android:label="@string/user_profile_pager_fragment_label"
+        tools:layout="@layout/fragment_pager_without_icons">
+        <action
+            android:id="@+id/action_userProfilePagerFragment_to_artistReleasesFragment"
+            app:destination="@id/artistReleasesFragment"/>
+        <action
+            android:id="@+id/action_userProfilePagerFragment_to_searchFragment"
+            app:destination="@id/searchFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/userCollectionsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserCollectionsFragment"
+        android:label="@string/user_collections_fragment_label"
+        tools:layout="@layout/user_collections_fragment">
+        <action
+            android:id="@+id/action_userCollectionsFragment_to_userProfilePagerFragment"
+            app:destination="@id/userProfilePagerFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/userRatingsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserRatingsFragment"
+        android:label="@string/user_ratings_fragment_label"
+        tools:layout="@layout/user_ratings_fragment">
+        <action
+            android:id="@+id/action_userRatingsFragment_to_userProfilePagerFragment"
+            app:destination="@id/userProfilePagerFragment"/>
+    </frame>
+
+    <!-- Artist menu -->
+    <frame
+        android:id="@+id/artistReleasesFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.ArtistReleasesFragment"
+        android:label="@string/artist_releases_fragment_label"
+        tools:layout="@layout/artist_releases_fragment">
+        <action
+            android:id="@+id/action_artistReleasesFragment_to_userProfilePagerFragment"
+            app:destination="@id/userProfilePagerFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/artistRatingsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.ArtistRatingsFragment"
+        android:label="@string/artist_ratings_fragment_label"
+        tools:layout="@layout/artist_ratings_fragment">
+        <action
+            android:id="@+id/action_artistRatingsFragment_to_artistReleasesFragment"
+            app:destination="@id/artistReleasesFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/artistTagsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.ArtistTagsFragment"
+        android:label="@string/artist_tags_fragment_label"
+        tools:layout="@layout/artist_tags_fragment">
+        <action
+            android:id="@+id/action_artistTagsFragment_to_artistReleasesFragment"
+            app:destination="@id/artistReleasesFragment"/>
+    </frame>
+
+</navigation>

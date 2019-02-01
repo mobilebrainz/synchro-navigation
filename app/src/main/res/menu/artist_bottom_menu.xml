@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/artistReleasesFragment"
+          android:icon="@drawable/ic_album_24"
+          android:title="@string/artist_releases_fragment_label"/>
+
+    <item android:id="@+id/artistRatingsFragment"
+          android:icon="@drawable/ic_star_24"
+          android:title="@string/artist_ratings_fragment_label"/>
+
+    <item android:id="@+id/artistTagsFragment"
+          android:icon="@drawable/ic_tag_24"
+          android:title="@string/artist_tags_fragment_label"/>
+
+</menu>

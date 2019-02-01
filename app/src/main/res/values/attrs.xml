@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomFragmentNavigator">
+        <attr name="android:name"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomNavHostFragment">
+        <attr name="navGraph" format="reference"/>
+        <attr name="defaultNavHost" format="boolean"/>
+    </declare-styleable>
+
+</resources>
