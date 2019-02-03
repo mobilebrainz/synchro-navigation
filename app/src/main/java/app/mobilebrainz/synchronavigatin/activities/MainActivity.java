@@ -21,11 +21,11 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import app.mobilebrainz.synchronavigatin.R;
-import app.mobilebrainz.synchronavigatin.navigation.CustomFragmentNavigator;
 import app.mobilebrainz.synchronavigatin.menu.DestinationMenu;
 import app.mobilebrainz.synchronavigatin.menu.MenuStorage;
-import app.mobilebrainz.synchronavigatin.navigation.NavigationUIExtension;
 import app.mobilebrainz.synchronavigatin.menu.UpNavigationStorage;
+import app.mobilebrainz.synchronavigatin.navigation.CustomFragmentNavigator2;
+import app.mobilebrainz.synchronavigatin.navigation.NavigationUIExtension;
 import app.mobilebrainz.synchronavigatin.viewmodels.UserProfilePagerAVM;
 
 import static app.mobilebrainz.synchronavigatin.adapter.pager.UserProfilePagerAdapter.TAB_USERS_POS;
@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements
 
     private static final String TAG = "MainActivity";
 
-    private static final int FRAGMENT_QUEUE_LIMIT = 3;
+    private static final int FRAGMENT_QUEUE_LIMIT = 1;
 
     private static final String BOTTOM_NAV_ID = "MainActivity.BOTTOM_NAV_ID";
     private static final String DRAWER_NAV_ID = "MainActivity.DRAWER_NAV_ID";
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements
         }
 
         navController = Navigation.findNavController(this, R.id.navHostView);
-        CustomFragmentNavigator customFragmentNavigator = navController.getNavigatorProvider().getNavigator(CustomFragmentNavigator.class);
+        CustomFragmentNavigator2 customFragmentNavigator = navController.getNavigatorProvider().getNavigator(CustomFragmentNavigator2.class);
         customFragmentNavigator.setFragmentQueueLimit(FRAGMENT_QUEUE_LIMIT);
 
         drawer = findViewById(R.id.drawerView);
@@ -109,17 +109,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public boolean onSupportNavigateUp() {
-        return NavigationUI.navigateUp(navController, drawer) || super.onSupportNavigateUp();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            //navigateUp();
-            super.onBackPressed();
-        }
+        return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
     @Override
@@ -215,21 +205,28 @@ public class MainActivity extends BaseActivity implements
         return true;
     }
 
-    private void navigateUp() {
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        // сначала пытается навигироваться по иерархии, если не может, тогда по бек-стеку
+        // todo: после иерархического возврата на стартовую закрывает приложение только псле 2-го нажатия на BackPress
+        // после обычных BackPress - выходит на раб. стол со стартовой как положено - после 1-го нажатия
+        else if (!navigateUp() && !navController.popBackStack()) {
+            finish();
+        }
+    }
+
+    // навигация по иерархии, заданной в UpNavigationStorage
+    private boolean navigateUp() {
         NavDestination currentDest = navController.getCurrentDestination();
         if (currentDest != null) {
             int currentDestId = currentDest.getId();
             int upNav = UpNavigationStorage.getInstance().get(currentDestId);
-            if (upNav > 0) {
-                navController.navigate(upNav);
-            } else {
-                navController.navigate(R.id.searchFragment);
-            }
-            if (currentDestId == R.id.searchFragment) {
-                drawer.openDrawer(GravityCompat.START);
-            }
+            return upNav > 0 && NavigationUIExtension.navigate(upNav, navController);
         } else {
-            drawer.openDrawer(GravityCompat.START);
+            return false;
         }
     }
 
@@ -238,7 +235,10 @@ public class MainActivity extends BaseActivity implements
         boolean handled = true;
         switch (menuItem.getItemId()) {
             case android.R.id.home:
-                navigateUp();
+                // сначала пытается навигироваться по иерархии, если не может - открыть дровер
+                if (!navigateUp()) {
+                    drawer.openDrawer(GravityCompat.START);
+                }
                 break;
             //для других menuItem, которые не входят в нав-граф:
             //case R.id....:
@@ -246,6 +246,7 @@ public class MainActivity extends BaseActivity implements
             // break;
             default:
                 handled = NavigationUIExtension.onOptionsNavDestinationSelected(menuItem, navController);
+                //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
         }
         return handled;
     }
@@ -265,6 +266,7 @@ public class MainActivity extends BaseActivity implements
 
             default:
                 handled = NavigationUIExtension.onDrawerNavDestinationSelected(menuItem, navController);
+                //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
         }
         if (handled) {
             ViewParent parent = navigationView.getParent();
@@ -293,6 +295,7 @@ public class MainActivity extends BaseActivity implements
                 //break;
                 default:
                     handled = NavigationUIExtension.onBottomNavDestinationSelected(menuItem, navController);
+                    //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
             }
             return handled;
         };

@@ -17,22 +17,37 @@
         <action
             android:id="@+id/action_searchFragment_to_artistReleasesFragment"
             app:destination="@id/artistReleasesFragment"/>
+        <action
+            android:id="@+id/action_searchFragment_to_barcodeFragment"
+            app:destination="@id/barcodeFragment"/>
     </frame>
     <frame
         android:id="@+id/barcodeFragment"
         android:name="app.mobilebrainz.synchronavigatin.fragments.BarcodeFragment"
         android:label="@string/barcode_fragment_label"
-        tools:layout="@layout/barcode_fragment"/>
+        tools:layout="@layout/barcode_fragment">
+        <action
+            android:id="@+id/action_barcodeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"/>
+    </frame>
     <frame
         android:id="@+id/aboutFragment"
         android:name="app.mobilebrainz.synchronavigatin.fragments.AboutFragment"
         android:label="@string/about_fragment_label"
-        tools:layout="@layout/about_fragment"/>
+        tools:layout="@layout/about_fragment">
+        <action
+            android:id="@+id/action_aboutFragment_to_feedbackFragment"
+            app:destination="@id/feedbackFragment"/>
+    </frame>
     <frame
         android:id="@+id/feedbackFragment"
         android:name="app.mobilebrainz.synchronavigatin.fragments.FeedbackFragment"
         android:label="@string/feedback_fragment_label"
-        tools:layout="@layout/feedback_fragment"/>
+        tools:layout="@layout/feedback_fragment">
+        <action
+            android:id="@+id/action_feedbackFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"/>
+    </frame>
     <frame
         android:id="@+id/settingsFragment"
         android:name="app.mobilebrainz.synchronavigatin.fragments.SettingsFragment"

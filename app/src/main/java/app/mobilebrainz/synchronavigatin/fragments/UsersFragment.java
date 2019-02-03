@@ -10,12 +10,12 @@ import android.widget.Button;
 
 import app.mobilebrainz.synchronavigatin.R;
 import app.mobilebrainz.synchronavigatin.viewmodels.UserProfilePagerAVM;
-import app.mobilebrainz.synchronavigatin.viewmodels.UsersViewModel;
+import app.mobilebrainz.synchronavigatin.viewmodels.UsersVM;
 
 
 public class UsersFragment extends BaseFragment {
 
-    private UsersViewModel viewModel;
+    private UsersVM viewModel;
     private UserProfilePagerAVM aViewModel;
 
     public static UsersFragment newInstance() {
@@ -38,7 +38,7 @@ public class UsersFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        viewModel = getViewModel(UsersViewModel.class);
+        viewModel = getViewModel(UsersVM.class);
         aViewModel = getActivityViewModel(UserProfilePagerAVM.class);
     }
 

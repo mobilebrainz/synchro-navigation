@@ -9,21 +9,25 @@
     <item
         android:id="@+id/barcodeFragment"
         android:icon="@drawable/ic_barcode_scan_24"
+        android:menuCategory="secondary"
         android:title="@string/barcode_fragment_label"/>
 
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_info_24"
+        android:menuCategory="secondary"
         android:title="@string/about_fragment_label"/>
 
     <item
         android:id="@+id/feedbackFragment"
         android:icon="@drawable/ic_email_24"
+        android:menuCategory="secondary"
         android:title="@string/feedback_fragment_label"/>
 
     <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings_24"
+        android:menuCategory="secondary"
         android:title="@string/settings_fragment_label"/>
 
 </menu>

@@ -8,10 +8,12 @@
 
     <item android:id="@+id/artistRatingsFragment"
           android:icon="@drawable/ic_star_24"
+          android:menuCategory="secondary"
           android:title="@string/artist_ratings_fragment_label"/>
 
     <item android:id="@+id/artistTagsFragment"
           android:icon="@drawable/ic_tag_24"
+          android:menuCategory="secondary"
           android:title="@string/artist_tags_fragment_label"/>
 
 

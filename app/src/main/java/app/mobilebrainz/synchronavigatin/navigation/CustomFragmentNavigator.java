@@ -45,6 +45,7 @@ public class CustomFragmentNavigator extends Navigator<CustomFragmentNavigator.D
     private boolean mIsPendingBackStackOperation = false;
 
     private ArrayDeque<String> fragmentQueue = new ArrayDeque<>();
+    //todo: save to bundle???
     private int fragmentQueueLimit = FRAGMENT_QUEUE_MAX;
 
     /*
@@ -270,6 +271,7 @@ public class CustomFragmentNavigator extends Navigator<CustomFragmentNavigator.D
         } else {
             return null;
         }
+
     }
 
     @Override
