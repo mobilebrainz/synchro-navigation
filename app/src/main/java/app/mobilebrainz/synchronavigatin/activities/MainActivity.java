@@ -211,8 +211,6 @@ public class MainActivity extends BaseActivity implements
             drawer.closeDrawer(GravityCompat.START);
         }
         // сначала пытается навигироваться по иерархии, если не может, тогда по бек-стеку
-        // todo: после иерархического возврата на стартовую закрывает приложение только псле 2-го нажатия на BackPress
-        // после обычных BackPress - выходит на раб. стол со стартовой как положено - после 1-го нажатия
         else if (!navigateUp() && !navController.popBackStack()) {
             finish();
         }

@@ -31,38 +31,6 @@ public class NavigationUIExtension {
         return startDestination;
     }
 
-    /*
-    public static NavDestination findStartDestination(@NonNull NavController navController) {
-        NavDestination startDestination = navController.getGraph();
-        while (startDestination instanceof NavGraph) {
-            NavGraph parent = (NavGraph) startDestination;
-            startDestination = parent.findNode(parent.getStartDestination());
-        }
-        return startDestination;
-    }
-
-
-    public static boolean navToSrartDestination(@NonNull NavController navController) {
-        NavOptions.Builder builder = new NavOptions.Builder()
-                .setLaunchSingleTop(true)
-                .setEnterAnim(R.anim.nav_default_enter_anim)
-                .setExitAnim(R.anim.nav_default_exit_anim)
-                .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-
-        int id = findStartDestination(navController.getGraph()).getId();
-        builder.setPopUpTo(id, false);
-        NavOptions options = builder.build();
-        try {
-            //TODO provide proper API instead of using Exceptions as Control-Flow.
-            navController.navigate(id, null, options);
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
-    */
-
     /**
      * From NavigationUI.
      * Walks up the view hierarchy, trying to determine if the given View is contained within

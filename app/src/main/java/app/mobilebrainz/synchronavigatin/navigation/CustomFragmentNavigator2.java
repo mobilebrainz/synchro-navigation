@@ -72,7 +72,6 @@ public class CustomFragmentNavigator2 extends Navigator<CustomFragmentNavigator2
 
         Fragment popfragment = mFragmentManager.findFragmentByTag(popname);
         Fragment nextfragment = mFragmentManager.findFragmentByTag(nextname);
-        Log.i(TAG, "popBackStack: ");
         if (popfragment != null && nextfragment != null) {
             transacion.detach(popfragment);
             transacion.attach(nextfragment);
@@ -180,18 +179,9 @@ public class CustomFragmentNavigator2 extends Navigator<CustomFragmentNavigator2
                 fragmentTransaction.addSharedElement(sharedElement.getKey(), sharedElement.getValue());
             }
         }
-
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
-
-        // todo: тестировать: удалить, если есть в бек-стеке, а потом добавить в голову
-        // нельзя удалять стартовый фрагмент из бек-стека, иначе невозможно будет сбросить весь бек-стек к стартовому???
-        // но вызов стартвого меню сьрасывает весь бек-стек, поэтому можно?
-        // каким-то образом перепутывает имена в фрагмент-менеджере, кроме того - а нужно ли?
-        //backStack.remove(name);
         backStack.push(name);
-        Log.i(TAG, "navigate: ");
-
         return destination;
     }
 
