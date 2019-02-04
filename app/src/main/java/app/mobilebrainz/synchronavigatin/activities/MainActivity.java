@@ -243,8 +243,7 @@ public class MainActivity extends BaseActivity implements
             // ...
             // break;
             default:
-                handled = NavigationUIExtension.onOptionsNavDestinationSelected(menuItem, navController);
-                //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
+                handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
         }
         return handled;
     }
@@ -263,8 +262,7 @@ public class MainActivity extends BaseActivity implements
                 break;
 
             default:
-                handled = NavigationUIExtension.onDrawerNavDestinationSelected(menuItem, navController);
-                //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
+                handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
         }
         if (handled) {
             ViewParent parent = navigationView.getParent();
@@ -292,8 +290,7 @@ public class MainActivity extends BaseActivity implements
                 //userProfilePagerAVM.tabPosition.setValue(TAB_USERS_POS);
                 //break;
                 default:
-                    handled = NavigationUIExtension.onBottomNavDestinationSelected(menuItem, navController);
-                    //handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
+                    handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
             }
             return handled;
         };
