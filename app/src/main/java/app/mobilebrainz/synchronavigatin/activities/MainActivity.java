@@ -24,7 +24,7 @@ import app.mobilebrainz.synchronavigatin.R;
 import app.mobilebrainz.synchronavigatin.menu.DestinationMenu;
 import app.mobilebrainz.synchronavigatin.menu.MenuStorage;
 import app.mobilebrainz.synchronavigatin.menu.UpNavigationStorage;
-import app.mobilebrainz.synchronavigatin.navigation.CustomFragmentNavigator2;
+import app.mobilebrainz.synchronavigatin.navigation.CustomFragmentNavigator;
 import app.mobilebrainz.synchronavigatin.navigation.NavigationUIExtension;
 import app.mobilebrainz.synchronavigatin.viewmodels.UserProfilePagerAVM;
 
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements
         }
 
         navController = Navigation.findNavController(this, R.id.navHostView);
-        CustomFragmentNavigator2 customFragmentNavigator = navController.getNavigatorProvider().getNavigator(CustomFragmentNavigator2.class);
+        CustomFragmentNavigator customFragmentNavigator = navController.getNavigatorProvider().getNavigator(CustomFragmentNavigator.class);
         customFragmentNavigator.setFragmentQueueLimit(FRAGMENT_QUEUE_LIMIT);
 
         drawer = findViewById(R.id.drawerView);

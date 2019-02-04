@@ -227,8 +227,8 @@ public class CustomNavHostFragment extends Fragment implements NavHost {
      * @return a new instance of a FragmentNavigator
      */
     @NonNull
-    protected Navigator<? extends CustomFragmentNavigator2.Destination> createFragmentNavigator() {
-        return new CustomFragmentNavigator2(requireContext(), getChildFragmentManager(), getId());
+    protected Navigator<? extends CustomFragmentNavigator.Destination> createFragmentNavigator() {
+        return new CustomFragmentNavigator(requireContext(), getChildFragmentManager(), getId());
     }
 
     @Nullable
