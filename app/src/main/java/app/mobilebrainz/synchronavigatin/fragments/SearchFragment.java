@@ -29,8 +29,15 @@ public class SearchFragment extends BaseFragment {
         Button artistButton = view.findViewById(R.id.artistButton);
         //artistButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_searchFragment_to_artistReleasesFragment, null));
         artistButton.setOnClickListener(v -> {
-            getActivityViewModel(ArtistAVM.class).artist.setValue("Queen");
-            Navigation.findNavController(v).navigate(R.id.action_searchFragment_to_artistReleasesFragment);
+            //1 стратегия - передача через sharedViewModel
+            //getActivityViewModel(ArtistAVM.class).artist.setValue("Queen");
+            //Navigation.findNavController(v).navigate(R.id.action_searchFragment_to_artistReleasesFragment);
+
+            //2 стратегия - передача через входные параметры, извлечение через getArguments() или BundleViewModel - тестировать
+            Bundle bundle = new Bundle();
+            bundle.putString(ArtistReleasesFragment.KEY_ARTIST_NAME, "Deep Purple");
+            Navigation.findNavController(artistButton)
+                    .navigate(R.id.action_searchFragment_to_artistReleasesFragment, bundle);
         });
 
         return view;

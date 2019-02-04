@@ -18,11 +18,18 @@ import app.mobilebrainz.synchronavigatin.viewmodels.ArtistReleasesVM;
 
 public class ArtistReleasesFragment extends BaseFragment implements UpdateBundle {
 
+    public ArtistReleasesFragment() {
+        //Log.i(TAG, "ArtistReleasesFragment: ");
+    }
+
     private static final String TAG = "ArtistReleasesF";
+
+    public static final String KEY_ARTIST_NAME = "ArtistReleasesFragment.KEY_ARTIST_NAME";
 
     private ArtistReleasesVM viewModel;
     private ArtistAVM artistAVM;
     private BundleViewModel bundleViewModel;
+    private String artistName;
 
     private TextView artistView;
 
@@ -40,16 +47,38 @@ public class ArtistReleasesFragment extends BaseFragment implements UpdateBundle
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        Log.i(TAG, "onActivityCreated: ");
+        
         viewModel = getViewModel(ArtistReleasesVM.class);
         bundleViewModel = getViewModel(BundleViewModel.class);
-        artistAVM = getActivityViewModel(ArtistAVM.class);
+
+        if (getArguments() != null) {
+            // для последующего отслеживания изменения бандла
+            bundleViewModel.setBundle(getArguments());
+            artistName = getArguments().getString(KEY_ARTIST_NAME);
+            show();
+        }
+
+        /*
+        получить стартовые аргументы при навигации в этот фрагмент с входными параметрами
+        и аттаче фрагмента
+         */
         bundleViewModel.observe(this, bundle -> {
-            Log.i(TAG, "onActivityCreated: ");
+            if (bundle != null) {
+                //artistName = bundle.getString(KEY_ARTIST_NAME);
+                //show();
+            }
         });
 
+        artistAVM = getActivityViewModel(ArtistAVM.class);
         artistAVM.artist.observe(this, artist -> {
-            artistView.setText(artist);
+            //artistView.setText(artist);
         });
+    }
+
+    private void show() {
+        artistView.setText(artistName);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements
 
     private static final String TAG = "MainActivity";
 
-    private static final int FRAGMENT_QUEUE_LIMIT = 4;
+    private static final int FRAGMENT_QUEUE_LIMIT = 8;
 
     private static final String BOTTOM_NAV_ID = "MainActivity.BOTTOM_NAV_ID";
     private static final String DRAWER_NAV_ID = "MainActivity.DRAWER_NAV_ID";

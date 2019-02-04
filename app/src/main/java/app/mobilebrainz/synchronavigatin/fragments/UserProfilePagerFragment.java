@@ -54,7 +54,10 @@ public class UserProfilePagerFragment extends BaseFragment {
 
         aViewModel.onArtist.observe(this, artist -> {
             getActivityViewModel(ArtistAVM.class).artist.setValue(artist);
-            Navigation.findNavController(pagerView).navigate(R.id.action_userProfilePagerFragment_to_artistReleasesFragment);
+            Bundle bundle = new Bundle();
+            bundle.putString(ArtistReleasesFragment.KEY_ARTIST_NAME, "Black Sabbath");
+            Navigation.findNavController(pagerView)
+                    .navigate(R.id.action_userProfilePagerFragment_to_artistReleasesFragment, bundle);
         });
 
         init();
