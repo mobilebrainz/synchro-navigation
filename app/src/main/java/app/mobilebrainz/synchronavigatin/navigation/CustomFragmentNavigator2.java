@@ -130,6 +130,10 @@ public class CustomFragmentNavigator2 extends Navigator<CustomFragmentNavigator2
             fragment = mFragmentManager.findFragmentByTag(name);
             Fragment currentFragment = mFragmentManager.findFragmentById(R.id.navHostView);
             if (currentFragment != null) {
+                if (fragment == currentFragment) {
+                    fragmentTransaction.commitNow();
+                    return null;
+                }
                 fragmentTransaction.detach(currentFragment);
             }
             if (fragment != null) {
