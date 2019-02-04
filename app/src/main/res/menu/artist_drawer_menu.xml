@@ -49,11 +49,11 @@
                     android:title="@string/user_profile_pager_fragment_label"/>
 
                 <item
-                    android:id="@+id/usersFragment"
+                    android:id="@+id/usersTabFragment"
                     android:icon="@drawable/ic_users_24"
                     android:menuCategory="secondary"
                     android:orderInCategory="7"
-                    android:title="@string/users_fragment_label"/>
+                    android:title="@string/users_tab_fragment_label"/>
 
                 <item
                     android:id="@+id/userCollectionsFragment"

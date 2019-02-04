@@ -254,7 +254,7 @@ public class MainActivity extends BaseActivity implements
         boolean handled = true;
         switch (menuItem.getItemId()) {
             // navigate with params to other destination
-            case R.id.usersFragment:
+            case R.id.usersTabFragment:
                 // navigate to ViewPagerFragment with tabPos in ViewPagerFragmentActivityVM
                 navController.navigate(R.id.userProfilePagerFragment);
                 UserProfilePagerAVM userProfilePagerAVM = getViewModel(UserProfilePagerAVM.class);

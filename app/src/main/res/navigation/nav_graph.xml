@@ -7,8 +7,9 @@
 
     <!-- frame вместо дефолтного fragment
         имя тега задано кастомным навигатором CustomFragmentNavigator.-->
-    <!-- Main menu-->
 
+
+    <!-- Main menu-->
     <frame
         android:id="@+id/searchFragment"
         android:name="app.mobilebrainz.synchronavigatin.fragments.SearchFragment"
@@ -84,6 +85,36 @@
         <action
             android:id="@+id/action_userRatingsFragment_to_userProfilePagerFragment"
             app:destination="@id/userProfilePagerFragment"/>
+    </frame>
+    <frame
+        android:id="@+id/userTagsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserTagsFragment"
+        android:label="@string/user_tags_fragment_label"
+        tools:layout="@layout/user_tags_fragment">
+    </frame>
+    <frame
+        android:id="@+id/userSubscriptionsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserSubscriptionsFragment"
+        android:label="@string/user_subscriptions_fragment_label"
+        tools:layout="@layout/user_subscriptions_fragment">
+    </frame>
+    <frame
+        android:id="@+id/userSubscribersFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserSubscribersFragment"
+        android:label="@string/user_subscribers_fragment_label"
+        tools:layout="@layout/user_subscribers_fragment">
+    </frame>
+    <frame
+        android:id="@+id/userRecommendsFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserRecommendsFragment"
+        android:label="@string/user_recommends_fragment_label"
+        tools:layout="@layout/user_recommends_fragment">
+    </frame>
+    <frame
+        android:id="@+id/userUsersFragment"
+        android:name="app.mobilebrainz.synchronavigatin.fragments.UserUsersFragment"
+        android:label="@string/user_users_fragment_label"
+        tools:layout="@layout/user_users_fragment">
     </frame>
 
     <!-- Artist menu -->

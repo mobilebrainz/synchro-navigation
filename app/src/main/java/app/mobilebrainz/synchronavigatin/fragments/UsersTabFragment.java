@@ -13,13 +13,13 @@ import app.mobilebrainz.synchronavigatin.viewmodels.UserProfilePagerAVM;
 import app.mobilebrainz.synchronavigatin.viewmodels.UsersVM;
 
 
-public class UsersFragment extends BaseFragment {
+public class UsersTabFragment extends BaseFragment {
 
     private UsersVM viewModel;
     private UserProfilePagerAVM aViewModel;
 
-    public static UsersFragment newInstance() {
-        return new UsersFragment();
+    public static UsersTabFragment newInstance() {
+        return new UsersTabFragment();
     }
 
     @Override

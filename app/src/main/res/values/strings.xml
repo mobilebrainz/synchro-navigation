@@ -12,9 +12,14 @@
     <string name="feedback_fragment_label">Feedback</string>
     <string name="settings_fragment_label">Settings</string>
     <string name="user_profile_pager_fragment_label">User Profile</string>
-    <string name="users_fragment_label">Users</string>
+    <string name="users_tab_fragment_label">Users Tab</string>
     <string name="user_collections_fragment_label">Collections</string>
     <string name="user_ratings_fragment_label">Ratings</string>
+    <string name="user_tags_fragment_label">Tags</string>
+    <string name="user_users_fragment_label">Users</string>
+    <string name="user_subscriptions_fragment_label">Subscriptions</string>
+    <string name="user_subscribers_fragment_label">Subscribers</string>
+    <string name="user_recommends_fragment_label">Recommends</string>
     <string name="artist_releases_fragment_label">Releases</string>
     <string name="artist_ratings_fragment_label">Ratings</string>
     <string name="artist_tags_fragment_label">Tags</string>

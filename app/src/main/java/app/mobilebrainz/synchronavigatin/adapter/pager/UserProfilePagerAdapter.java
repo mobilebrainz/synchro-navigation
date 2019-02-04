@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import app.mobilebrainz.synchronavigatin.R;
 import app.mobilebrainz.synchronavigatin.fragments.UserProfileFragment;
-import app.mobilebrainz.synchronavigatin.fragments.UsersFragment;
+import app.mobilebrainz.synchronavigatin.fragments.UsersTabFragment;
 
 
 public class UserProfilePagerAdapter extends UpdatableFragmentPagerAdapter {
@@ -27,7 +27,7 @@ public class UserProfilePagerAdapter extends UpdatableFragmentPagerAdapter {
             case TAB_PROFILE_POS:
                 return UserProfileFragment.newInstance();
             case TAB_USERS_POS:
-                return UsersFragment.newInstance();
+                return UsersTabFragment.newInstance();
         }
         return null;
     }
