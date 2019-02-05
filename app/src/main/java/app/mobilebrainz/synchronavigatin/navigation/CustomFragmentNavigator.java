@@ -128,17 +128,19 @@ public class CustomFragmentNavigator extends Navigator<CustomFragmentNavigator.D
         if (fragmentQueueLimit > 0) {
             fragment = mFragmentManager.findFragmentByTag(name);
             Fragment currentFragment = mFragmentManager.findFragmentById(R.id.navHostView);
+            //Log.i(TAG, "navigate: ");
             if (currentFragment != null) {
                 if (fragment == currentFragment) {
                     fragmentTransaction.commitNow();
                     return null;
                 }
                 fragmentTransaction.detach(currentFragment);
+                //Log.i(TAG, "navigate: ");
             }
             Log.i(TAG, "navigate: ");
             if (fragment != null) {
                 fragmentTransaction.attach(fragment);
-                Log.i(TAG, "navigate: ");
+                //Log.i(TAG, "navigate: ");
 
                 //// todo: необходимо тестирование для поиска стратегии применения setArguments() и BundleViewModel
                 // они хорошо передают входные данные, но как и где в фрагменте их обраюатывать
@@ -152,14 +154,15 @@ public class CustomFragmentNavigator extends Navigator<CustomFragmentNavigator.D
                 в котором проверяются аргументы, т.е. при каждой ротации мобилы. Чтобы этого не происходило,
                 надо в on... методе сравнивать новые аргументы со старыми, которые надо хранить отдельно в бандле.
                  */
+                /*
                 if (args != null) {
                     fragment.setArguments(args);
                 }
-
+                */
                 /*
                  BundleViewModel живёт вместе с фрагментом, поэтому при аттаче и ротации BundleViewModel
                  будет доступен. Передавая в него аргументы мы сигнализируем фрагменту об навигации в него
-                 с аргументами.
+                 с новыми аргументами.
                  Проблема: при каждой навигации в фрагмент с одними и теми же аргументами мы будем всё-равно
                  вызывать обсервер и тем самыи принуждать фрагмент перестраиваться из-за якобы новых аргументов.
                  Поэтому в BundleViewModel надо сравнивать старые аргументы с новыми и если они изменились, тогда
@@ -167,8 +170,8 @@ public class CustomFragmentNavigator extends Navigator<CustomFragmentNavigator.D
                  Проблема та же что и с fragment.setArguments(args), но в отличие от setArguments, проверка будет
                  в одном BundleViewModel на все фрагменты, а не в каждом фрагменте.
                  */
-                if (fragment instanceof UpdateBundle && args != null) {
-                    BundleViewModel bundleViewModel = ((UpdateBundle) fragment).getBundleViewModel();
+                if (fragment instanceof UpdatableFragmentInterface && args != null) {
+                    BundleViewModel bundleViewModel = ((UpdatableFragmentInterface) fragment).getBundleViewModel();
                     if (bundleViewModel != null) {
                         bundleViewModel.setBundle(args);
                     }

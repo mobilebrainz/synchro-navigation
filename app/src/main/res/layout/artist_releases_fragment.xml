@@ -2,11 +2,13 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/artistReleasesView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ArtistReleasesFragment">
 
     <FrameLayout
+        android:id="@+id/artistFrameView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,8 +16,7 @@
             android:id="@+id/artistView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/artist_releases_fragment_label"/>
+            android:gravity="center"/>
 
     </FrameLayout>
 

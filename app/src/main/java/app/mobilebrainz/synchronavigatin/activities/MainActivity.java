@@ -212,7 +212,7 @@ public class MainActivity extends BaseActivity implements
         }
         // сначала пытается навигироваться по иерархии, если не может, тогда по бек-стеку
         else if (!navigateUp() && !navController.popBackStack()) {
-            finish();
+            super.onBackPressed();
         }
     }
 
